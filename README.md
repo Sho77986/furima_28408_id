@@ -51,6 +51,7 @@ Things you may want to cover:
 | Column           | Type       | Options     |
 | ----------       | ---------- | ----------- |
 | name             | string     | null: false |
+| user_id          | integer    | null: false |
 | price            | string     | null: false |
 | image            | string     | null: false |
 | item_status_id      | integer     | null: false |
@@ -70,6 +71,9 @@ Things you may want to cover:
 | Column     | Type       | Options     |
 | ---------- | ---------- | ----------- |
 | content    | string     |
+| user_id    | integer    | null: false, foreign_key: true |
+| item_id    | integer    | null: false, foreign_key: true |
+
 
 ### Association
 - belongs_to :users
@@ -80,13 +84,10 @@ Things you may want to cover:
 ## purchases テーブル
 | Column        | Type       | Options     |
 | ----------    | ---------- | ----------- |
-| user_id       | references | null: false, foreign_key: true |
-| item_id       | references | null: false, foreign_key: true |
+| user      | references | null: false, foreign_key: true |
+| item      | references | null: false, foreign_key: true |
 
-### association
-- belongs_to :items
-- belongs_to :users
-- has_one    :address
+
 
 
 
@@ -94,12 +95,12 @@ Things you may want to cover:
 
 |Column         | Type       | Options     |
 | ----------    | ---------- | ----------- |
-| zip  _code_id    | integer     | null: false |
-| prefectures_id   | integer     | null: false |
-| city_id          | integer     | null: false |
-| address_id       | integer     | null: false |
+| zip  _code_id    | string    | null: false |
+| prefectures_id   | string    | null: false |
+| city_id          | string    | null: false |
+| address_id       | string   | null: false |
 | building      | string     | null: false |
 | call_number   | string     | null: false |
 
 ### association
-- belongs_to :purchases
+- belongs_to :items
