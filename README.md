@@ -33,17 +33,16 @@ Things you may want to cover:
 | nickname       | string      | null: false |
 | first_name     | string      | null: false |
 | family_name    | string      | null: false |
-| furigana       | string      | null: false |
-| birthday_month | string      | null: false |
-| birthday_day   | string      | null: false |
-| birthday_year  | string      | null: false |
+| first_name_furigana     | string      | null: false |
+| family_name_furigana    | string      | null: false |
+| birthday       | date        | null: false |
 | email          | string      | null: false |
 | password       | string      | null: false |
 
 ### Association
 - has_many :items
 - has_many :comments
-- has_one  :address
+- has_many  :purchases
 
 
 
@@ -54,11 +53,11 @@ Things you may want to cover:
 | name             | string     | null: false |
 | price            | string     | null: false |
 | image            | string     | null: false |
-| item_status      | string     | null: false |
-| shipping_charges | string     | null: false |
-| shipping_area    | string     | null: false |
-| shipping_days    | string     | null: false |
-| category         | string     | null: false |
+| item_status_id      | integer     | null: false |
+| shipping_charges_id | integer     | null: false |
+| shipping_area_id    | integer     | null: false |
+| shipping_days_id    | integer     | null: false |
+| category_id         | integer     | null: false |
 
 ### Association 
 - belongs_to :users
@@ -81,11 +80,12 @@ Things you may want to cover:
 ## purchases テーブル
 | Column        | Type       | Options     |
 | ----------    | ---------- | ----------- |
-| name          | string     | null: false |
-| price         | string     | null: false |
+| user_id       | references | null: false, foreign_key: true |
+| item_id       | references | null: false, foreign_key: true |
 
 ### association
 - belongs_to :items
+- belongs_to :users
 - has_one    :address
 
 
@@ -94,13 +94,12 @@ Things you may want to cover:
 
 |Column         | Type       | Options     |
 | ----------    | ---------- | ----------- |
-| zip_code      | string     | null: false |
-| prefectures   | string     | null: false |
-| city          | string     | null: false |
-| address       | string     | null: false |
+| zip  _code_id    | integer     | null: false |
+| prefectures_id   | integer     | null: false |
+| city_id          | integer     | null: false |
+| address_id       | integer     | null: false |
 | building      | string     | null: false |
 | call_number   | string     | null: false |
 
 ### association
-- belongs_to :users
 - belongs_to :purchases
