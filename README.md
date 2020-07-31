@@ -63,7 +63,7 @@ Things you may want to cover:
 ### Association 
 - belongs_to :users
 - has_many   :comments
-- has_one    :address
+- has_one    :addresses
 
 
 
@@ -82,16 +82,19 @@ Things you may want to cover:
 
 
 ## purchases テーブル
+
 | Column        | Type       | Options     |
 | ----------    | ---------- | ----------- |
 | user      | references | null: false, foreign_key: true |
 | item      | references | null: false, foreign_key: true |
 
+### association
+-belongs_to :items
+-belongs_to :users
 
 
 
-
-## address テーブル
+## addresses テーブル
 
 |Column         | Type       | Options     |
 | ----------    | ---------- | ----------- |
