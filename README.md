@@ -51,7 +51,7 @@ Things you may want to cover:
 | Column           | Type       | Options     |
 | ----------       | ---------- | ----------- |
 | name             | string     | null: false |
-| user_id          | integer    | null: false |
+| user_id          | integer    | null: false ,foreign_key :true|
 | price            | string     | null: false |
 | image            | string     | null: false |
 | item_status_id      | integer     | null: false |
@@ -95,7 +95,7 @@ Things you may want to cover:
 
 |Column         | Type       | Options     |
 | ----------    | ---------- | ----------- |
-| zip  _code_id    | string    | null: false |
+| postal_code_id    | string    | null: false |
 | prefectures_id   | string    | null: false |
 | city_id          | string    | null: false |
 | address_id       | string   | null: false |
