@@ -28,29 +28,43 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column     | Type        | Options     |
-| ---------- | ----------- | ----------  |
-| nickname   | string      | null: false |
-| email      | string      | null: false |
-| password   | string      | null: false |
+| Column         | Type        | Options     |
+| -----------    | ----------- | ----------  |
+| nickname       | string      | null: false |
+| first_name     | string      | null: false |
+| family_name    | string      | null: false |
+| furigana       | string      | null: false |
+| birthday_month | string      | null: false |
+| birthday_day   | string      | null: false |
+| birthday_year  | string      | null: false |
+| email          | string      | null: false |
+| password       | string      | null: false |
 
 ### Association
 - has_many :items
 - has_many :comments
-- has_one  :purchases
+- has_one  :address
+
 
 
 ## items テーブル
 
-| Column     | Type       | Options     |
-| ---------- | ---------- | ----------- |
-| name       | string     | null: false |
-| price      | string     | null: false |
-| image      | string     | null: false |
+| Column           | Type       | Options     |
+| ----------       | ---------- | ----------- |
+| name             | string     | null: false |
+| price            | string     | null: false |
+| image            | string     | null: false |
+| item_status      | string     | null: false |
+| shipping_charges | string     | null: false |
+| shipping_area    | string     | null: false |
+| shipping_days    | string     | null: false |
+| category         | string     | null: false |
 
 ### Association 
 - belongs_to :users
 - has_many   :comments
+- has_one    :purchases
+
 
 
 ## comments テーブル
@@ -63,13 +77,23 @@ Things you may want to cover:
 - belongs_to :items
 
 
+
 ## purchases テーブル
 | Column        | Type       | Options     |
 | ----------    | ---------- | ----------- |
-| real_name     | string     | null: false |
-| card_number   | string     | null: false |
-| card_deadline | string     | null: false |
-| security_cord | string     | null: false |
+| name          | string     | null: false |
+| price         | string     | null: false |
+
+### association
+- belongs_to :items
+- has_one    :address
+
+
+
+## address テーブル
+
+|Column         | Type       | Options     |
+| ----------    | ---------- | ----------- |
 | zip_code      | string     | null: false |
 | prefectures   | string     | null: false |
 | city          | string     | null: false |
@@ -77,6 +101,6 @@ Things you may want to cover:
 | building      | string     | null: false |
 | call_number   | string     | null: false |
 
-
 ### association
 - belongs_to :users
+- belongs_to :purchases
