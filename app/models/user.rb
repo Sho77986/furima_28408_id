@@ -4,16 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-
-
   with_options presence: true do
     validates :nickname,  uniqueness: { case_sensitive: true }
-    validates :email, uniqueness: true
-    validates :email, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-    validates :password, length:{ minimum: 6 }
-    validates :password, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-    validates :password, confirmation: true
+    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
     validates :first_name, format: {with: /\A[ぁ-んァ-ンー-龥]+\z/i }
     validates :family_name, format: {with: /\A[ぁ-んァ-ンー-龥]+\z/i }
     validates :first_name_furigana, format: {with: /\A[ァ-ン]+\z/i }
