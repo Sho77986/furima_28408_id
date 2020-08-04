@@ -13,12 +13,12 @@ class Item <  ApplicationRecord
 
   VALID_NAME_REGEX = /\A[ぁ-んァ-ンー-龥]+\z/i
 
-  with_options presence true do
+  with_options presence: true do
     validates :name, format: {with: VALID_NAME_REGEX }
     validates :text
-    validates :price, #numericality: true, :greater_than 300
-  end 
-    validates :category, :item_status, :shipping_area, :shipping_charge, :shipping_day,  numericality: { otehr_than: 1 }
+    validates :price
+  end
 
+  validates :category, :item_status, :shipping_area, :shipping_charge, :shipping_day,  numericality: { otehr_than: 1 }
 
 end
