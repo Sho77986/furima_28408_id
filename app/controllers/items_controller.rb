@@ -10,7 +10,14 @@ class ItemsController < ApplicationController
   end
 
   def create
-    Item.create(Item_params)
+    @item =Item.new(item_params)
+    # binding.pry
+    if @item.save!
+
+       redirect_to root_path
+    else
+       render :new
+    end
   end
 
   def destroy
@@ -42,8 +49,8 @@ class ItemsController < ApplicationController
   end
 
   #作成と編集で必要
-  def Item_params
-    params.require(:tweet).permit(:name, :price, :image)
+  def item_params
+    params.permit(:name, :text, :price, :image, :category_id, :item_status_id, :shipping_charge_id, :shipping_area_id, :shipping_day_id, :text).merge(user_id: current_user.id)
   end
 
 end
