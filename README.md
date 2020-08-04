@@ -53,7 +53,6 @@ Things you may want to cover:
 | name             | string     | null: false |
 | user_id          | integer    | null: false ,foreign_key :true|
 | price            | string     | null: false |
-| image            | string     | null: false |
 | item_status_id      | integer     | null: false |
 | shipping_charges_id | integer     | null: false |
 | shipping_area_id    | integer     | null: false |
