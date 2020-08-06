@@ -21,7 +21,9 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to root_path
   end
 
   #編集と更新はセットで必要
@@ -31,7 +33,9 @@ class ItemsController < ApplicationController
 
   def update
     item = Item.find(params[:id])
+    #binding.pry
     item.update(item_params)
+    redirect_to root_path
   end
 
   def show
@@ -50,7 +54,7 @@ class ItemsController < ApplicationController
 
   #作成と編集で必要
   def item_params
-    params.permit(:name, :text, :price, :image, :category_id, :item_status_id, :shipping_charge_id, :shipping_area_id, :shipping_day_id, :text).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :text, :price, :image, :category_id, :item_status_id, :shipping_charge_id, :shipping_area_id, :shipping_day_id, :text).merge(user_id: current_user.id)
   end
 
 end

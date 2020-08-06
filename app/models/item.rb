@@ -4,7 +4,10 @@ class Item <  ApplicationRecord
   has_one    :addresses
   has_one_attached :image
   #validates :text presence: true
+
+ 
   
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :item_status
   belongs_to_active_hash :shipping_area
@@ -19,6 +22,6 @@ class Item <  ApplicationRecord
     validates :price
   end
 
-  validates :category, :item_status, :shipping_area, :shipping_charge, :shipping_day,  numericality: { otehr_than: 1 }
+  validates :category_id, :item_status_id, :shipping_area_id, :shipping_charge_id, :shipping_day_id,  numericality: { otehr_than: 1 }
 
 end
