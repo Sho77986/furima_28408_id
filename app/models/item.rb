@@ -3,7 +3,6 @@ class Item <  ApplicationRecord
   has_many   :comments
   has_one    :addresses
   has_one_attached :image
-  #validates :text presence: true
 
  
   

@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :return_index, except: [:index, :show]
+  before_action :set_item, only: [:destroy, :edit, :update, :show]
 
   def index
     @items = Item.all
@@ -19,25 +20,23 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
     @item.destroy
     redirect_to root_path
   end
 
   #編集と更新はセットで必要
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    item = Item.find(params[:id])
-    #binding.pry
-    item.update(item_params)
-    redirect_to root_path
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
-  def show
-    @item = Item.find(params[:id])
+  def show  
   end
 
 
@@ -48,6 +47,10 @@ class ItemsController < ApplicationController
     unless user_signed_in?
       redirect_to action: :index
     end
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
   #作成と編集で必要
