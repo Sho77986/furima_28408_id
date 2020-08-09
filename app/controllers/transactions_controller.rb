@@ -1,0 +1,52 @@
+class TransactionsController < ApplicationController
+  before_action  :move_to_index
+
+  def index
+    @item = Item.find(params[:item_id])
+  end
+
+  def create
+    @address = AddressPurchase.new(purchase_params)
+    if @address.save
+      pay_item 
+     return redirect_to root_path
+    else
+        render 'index'
+     end
+    
+  end
+
+ private
+
+
+  def  purchase_params
+    params.permit(:item_id, :postal_code_id, :shipping_area_id, :city_id, :address_id, :building, :call_number).merge(user_id: current_user.id,  item_id: params[:item_id])
+  end
+  
+  def transaction_params
+    params.permit(:token)
+    #params.require(:items).permit(:price)
+  end
+
+  def pay_item
+    @item_test = Item.find(params[:item_id])
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+    amount: @item_test.price,  
+      card: params[:token],    
+      currency:'jpy'                 
+    )
+  end
+
+
+  private
+
+  def move_to_index
+    redirect_to  root_path   unless  user_signed_in?  && current_user.id  != @item.user_id 
+  end
+
+  
+
+  
+end
+
