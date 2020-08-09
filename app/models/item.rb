@@ -2,6 +2,7 @@ class Item <  ApplicationRecord
   belongs_to :user
   has_many   :comments
   has_one    :addresses
+  has_one    :purchases
   has_one_attached :image
 
  
@@ -20,7 +21,7 @@ class Item <  ApplicationRecord
     validates :text
     validates :price
   end
-
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 1000000}
   validates :category_id, :item_status_id, :shipping_area_id, :shipping_charge_id, :shipping_day_id,  numericality: { otehr_than: 1 }
 
 end
