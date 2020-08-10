@@ -1,15 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe Item, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+#RSpec.describe Item, type: :model do
+#  pending "add some examples to (or delete) #{__FILE__}"
+#end
 
 
-describe Item do
-  before do
-    @user = FactoryBot.bulid(:user)
-  end
-
+describe Item, type: :model do
   describe '商品新規登録' do
     context '商品新規登録がうまくいくとき' do
       it "nameとuser_id,priceとitem_status_idとshipping_charge_id,
@@ -72,3 +68,6 @@ describe Item do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category_id can't be blank")
       end
+    end
+  end
+end
