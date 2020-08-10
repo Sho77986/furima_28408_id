@@ -13,11 +13,12 @@ class TransactionsController < ApplicationController
     else
         render 'index'
      end
-    
   end
 
  private
-
+  def move_to_index
+    redirect_to  root_path   unless  user_signed_in?  && current_user.id  != @item.user_id 
+  end
 
   def  purchase_params
     params.permit(:item_id, :postal_code_id, :shipping_area_id, :city_id, :address_id, :building, :call_number).merge(user_id: current_user.id,  item_id: params[:item_id])
@@ -25,7 +26,6 @@ class TransactionsController < ApplicationController
   
   def transaction_params
     params.permit(:token)
-    #params.require(:items).permit(:price)
   end
 
   def pay_item
@@ -37,16 +37,5 @@ class TransactionsController < ApplicationController
       currency:'jpy'                 
     )
   end
-
-
-  private
-
-  def move_to_index
-    redirect_to  root_path   unless  user_signed_in?  && current_user.id  != @item.user_id 
-  end
-
-  
-
-  
 end
 
