@@ -62,7 +62,8 @@ Things you may want to cover:
 ### Association 
 - belongs_to :users
 - has_many   :comments
-- has_one    :addresses
+- has_one    :address
+- has_one    :purchase
 
 
 
@@ -84,8 +85,8 @@ Things you may want to cover:
 
 | Column        | Type       | Options     |
 | ----------    | ---------- | ----------- |
-| user      | references | null: false, foreign_key: true |
-| item      | references | null: false, foreign_key: true |
+| user          | references | null: false, foreign_key: true |
+| item          | references | null: false, foreign_key: true |
 
 ### association
 -belongs_to :items
@@ -99,7 +100,7 @@ Things you may want to cover:
 | ----------    | ---------- | ----------- |
 | item_id        | integer   | null: false , foreign_key: true |
 | postal_code_id    | string    | null: false |
-| prefectures_id   | string    | null: false |
+| shipping_area_id   | integer    | null: false |
 | city_id          | string    | null: false |
 | address_id       | string   | null: false |
 | building      | string     | null: false |

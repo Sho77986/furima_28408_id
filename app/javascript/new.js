@@ -1,18 +1,24 @@
-console.log("OK")
-window.addEventListener("keyup", function(){
+
+window.addEventListener("load", function(){
+
+  const priceField =document.getElementById("item_price")
+
+  priceField.addEventListener("keyup", function(){ 
 
 
-    var Price = document.getElementById("item_price").value
-   
-     var SalesCommission = document.getElementById('add-tax-price')
-     var SalesCommission = Price * 0.1;
-     var Profit = document.getElementById('profit')
-     var Profit = Price * 0.9;
+    const Price = document.getElementById("item_price").value
+  
+    const SalesCommission = document.getElementById('add-tax-price')
+    const SalesCommission = Price * 0.1;
+    const Profit = document.getElementById('profit')
+    const Profit = Price * 0.9;
+ 
+    $('#add-tax-price').html(SalesCommission);
+    $('#profit').html(Profit); 
+ 
+   })
 
-     $('#add-tax-price').html(SalesCommission);
-     $('#profit').html(Profit); 
-
- })
+});
 
 // keyup
 // 入力した値を取得
