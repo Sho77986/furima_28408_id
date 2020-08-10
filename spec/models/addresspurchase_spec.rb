@@ -6,6 +6,11 @@ require 'rails_helper'
 
 
 describe AddressPurchase, type: :model do
+  before do
+    @address_purchase = FactoryBot.build(:address_purchase)
+  end  
+
+
   describe '購入情報登録' do
     context '購入情報登録がうまくいくとき' do
        it 'すべての値が正しく入力されていれば保存できること' do
@@ -34,7 +39,7 @@ describe AddressPurchase, type: :model do
       it "shipping_area_idが{1}あれば登録できない" do
         @address_purchase.shipping_area_id = {1}
         @AddressPurchase.valid?
-        expect(@address_purchase.errors.full_messages).to include("shipping_area_id can't be {--}")
+        expect(@address_purchase.errors.full_messages).to include("shipping_area_id can't be '--'")
       end
       it "city_idが空では登録できない" do
         @address_purchase.city_id =""

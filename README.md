@@ -62,8 +62,8 @@ Things you may want to cover:
 ### Association 
 - belongs_to :users
 - has_many   :comments
-- has_one    :addresses
-- has_one    :purchases
+- has_one    :address
+- has_one    :purchase
 
 
 

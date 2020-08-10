@@ -6,12 +6,12 @@ window.addEventListener("load", function(){
   priceField.addEventListener("keyup", function(){ 
 
 
-    var Price = document.getElementById("item_price").value
+    const Price = document.getElementById("item_price").value
   
-    var SalesCommission = document.getElementById('add-tax-price')
-    var SalesCommission = Price * 0.1;
-    var Profit = document.getElementById('profit')
-    var Profit = Price * 0.9;
+    const SalesCommission = document.getElementById('add-tax-price')
+    const SalesCommission = Price * 0.1;
+    const Profit = document.getElementById('profit')
+    const Profit = Price * 0.9;
  
     $('#add-tax-price').html(SalesCommission);
     $('#profit').html(Profit); 
