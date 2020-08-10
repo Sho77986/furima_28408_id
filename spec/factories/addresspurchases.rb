@@ -8,12 +8,12 @@ FactoryBot.define do
   
    #address
     item_id          { 0 }
-    postal_code_id   { 000-0000 }
+    postal_code_id   {'000-0000'}
     shipping_area_id { 0 }
     city_id          { 'ううう市' }
     address_id       { 'えええ番地' }
     building         { 'おおおビル' }
-    call_number      { 09000000000 }
+    call_number      {'09000000000'}
    
   end
 end
