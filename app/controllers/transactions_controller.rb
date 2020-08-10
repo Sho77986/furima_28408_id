@@ -1,8 +1,9 @@
 class TransactionsController < ApplicationController
-  before_action  :move_to_index
+  before_action  :move_to_index,  only: [:index]
 
   def index
-    @item = Item.find(params[:item_id])
+    @item = Item.find(params[:item_id]) 
+    redirect_to root_path if current_user.id == @item.user_id  ||  Purchase.find_by(item_id: params[:item_id]) != nil
   end
 
   def create
@@ -16,8 +17,8 @@ class TransactionsController < ApplicationController
   end
 
  private
-  def move_to_index
-    redirect_to  root_path   unless  user_signed_in?  && current_user.id  != @item.user_id 
+  def move_to_index 
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
   def  purchase_params
@@ -38,4 +39,6 @@ class TransactionsController < ApplicationController
     )
   end
 end
+
+
 
