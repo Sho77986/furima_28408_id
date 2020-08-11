@@ -9,9 +9,9 @@ window.addEventListener("load", function(){
     const Price = document.getElementById("item_price").value
   
     let SalesCommission = document.getElementById('add-tax-price')
-    let SalesCommission = Price * 0.1;
+     SalesCommission = Price * 0.1;
     let Profit = document.getElementById('profit')
-    let Profit = Price * 0.9;
+     Profit = Price * 0.9;
  
     $('#add-tax-price').html(SalesCommission);
     $('#profit').html(Profit); 
@@ -27,3 +27,5 @@ window.addEventListener("load", function(){
 
  //salesCommission = Number(SalesCommission).val();
  //profit = Number(Profit).val();
+
+
